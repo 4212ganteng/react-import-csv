@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
+import { Button } from "react-bootstrap";
+import Modalcard from "./components/Modalcard";
 
 function App() {
   const [csvData, setCsvData] = useState([]);
@@ -7,6 +9,7 @@ function App() {
   const allowedExtensions = ["csv"];
   // err mesage
   const [error, setError] = useState("");
+  const [on, setOn] = useState(false);
 
   const handleFileChange = (e) => {
     setError("");
@@ -53,6 +56,10 @@ function App() {
           ))}
         </tbody>
       </table>
+      <div>
+        <Button onClick={() => setOn(true)}>modal</Button>
+      </div>
+      <Modalcard tampil={on} settampil={() => setOn(false)} />
     </div>
   );
 }
